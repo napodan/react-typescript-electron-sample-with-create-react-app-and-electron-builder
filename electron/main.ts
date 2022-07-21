@@ -4,7 +4,7 @@ import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
 
-function createWindow() {
+function createWindow(winNumber: number = 0): BrowserWindow {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -16,9 +16,9 @@ function createWindow() {
 
   if (app.isPackaged) {
     // 'build/index.html'
-    win.loadURL(`file://${__dirname}/../index.html`);
+    win.loadURL(`file://${__dirname}/../index.html?winNumber=${winNumber}`);
   } else {
-    win.loadURL("http://localhost:3000/index.html");
+    win.loadURL(`http://localhost:3000/index.html?winNumber=${winNumber}`);
 
     win.webContents.openDevTools();
 
@@ -45,8 +45,8 @@ app.whenReady().then(() => {
     .then((name) => console.log(`Added Extension:  ${name}`))
     .catch((err) => console.log("An error occurred: ", err));
 
-  createWindow();
-  createWindow();
+  createWindow(1);
+  createWindow(2);
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {

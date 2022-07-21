@@ -1,7 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const queryParams = new URLSearchParams(window.location.search);
+  const win = queryParams.get("winNumber");
+  console.log(win);
   return (
     <div className="App">
       <header className="App-header">

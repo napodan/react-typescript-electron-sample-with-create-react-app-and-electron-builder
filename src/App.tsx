@@ -1,5 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
+import WindowWithButton from "./WindowWithButton";
+import WindowWithText from "./WindowWithText";
 
 function App() {
   const queryParams = new URLSearchParams(window.location.search);
@@ -7,6 +9,8 @@ function App() {
   console.log(win);
   return (
     <div className="App">
+      <WindowWithButton />
+      <WindowWithText />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

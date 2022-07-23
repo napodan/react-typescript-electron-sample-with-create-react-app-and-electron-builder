@@ -12,11 +12,9 @@ const counterSlice = createSlice({
   initialState,
   reducers: {
     increment(state) {
-      console.log("increment");
       state.value++;
     },
     decrement(state) {
-      console.log("decrement");
       state.value--;
     },
     incrementByAmount(state, action: PayloadAction<number>) {

@@ -4,6 +4,8 @@ import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
 
+import "./store";
+
 function createWindow(winNumber: number = 0): BrowserWindow {
   const win = new BrowserWindow({
     width: 800,

@@ -5,6 +5,8 @@ interface CounterState {
   value: number;
 }
 
+export const CONSOLE_LOG_RESULT = "console_log_result";
+
 const initialState = { value: 0 } as CounterState;
 
 const counterSlice = createSlice({
@@ -19,6 +21,11 @@ const counterSlice = createSlice({
     },
     incrementByAmount(state, action: PayloadAction<number>) {
       state.value += action.payload;
+    },
+  },
+  extraReducers: {
+    [CONSOLE_LOG_RESULT]: (state) => {
+      console.log("Value : ", state.value);
     },
   },
 });

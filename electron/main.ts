@@ -1,10 +1,11 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "path";
 import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
 
-import "./store";
+import { store } from "./store";
+import { CONSOLE_LOG_RESULT } from "../src/counterSlice";
 
 function createWindow(winNumber: number = 0): BrowserWindow {
   const win = new BrowserWindow({
@@ -60,5 +61,12 @@ app.whenReady().then(() => {
     if (process.platform !== "darwin") {
       app.quit();
     }
+  });
+});
+
+ipcMain.on(CONSOLE_LOG_RESULT, () => {
+  console.log("main");
+  store.dispatch({
+    type: CONSOLE_LOG_RESULT,
   });
 });
